@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Hello 2015"
-subtitle:   " \"how to bulid mybolg\""
+title:      "Hello 2020"
+subtitle:   " \"hello world\""
 date:       2020-11-25 12:00:00
 author:     "ysbao"
 header-img: "img/post-bg-2015.jpg"
