@@ -1,14 +1,21 @@
+---
 layout:     post
-title:      "My first date "
-subtitle:   " \"我的第一次约会\""
-date:       2018-04-06 12:00:00
+title:      "Life Essay Part1"
+subtitle:   " \"my first date\""
+date:       2020-11-25 12:00:00
 author:     "ysbao"
 header-img: "img/post-bg-2015.jpg"
 catalog: true
 tags:
-
     - 生活
-        - Meta
+    - Meta
+
+
+---
+
+> “Yeah It's on. ”
+
+### 我的第一次约会
 
 2018年4月6号，是我人生第一次约女生出来。
 
@@ -26,7 +33,7 @@ tags:
  点菜，应该是我先点，点几个招牌，问问她喜欢什么，然后我去洗碗，和叫服务员上菜。 
 原小学，被司机吐槽像监狱，偏远，每次都得打车，还有好舍友，想换的学校。清边小学教英语。/而且还是个麦霸
 
-ps  
+#### ps
 
 ![心动背影](img/mylove/picture3.jpg)
 
