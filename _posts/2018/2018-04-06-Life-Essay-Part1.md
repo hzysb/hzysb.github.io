@@ -35,5 +35,5 @@ tags:
 
 #### ps
 
-![心动背影](img/mylove/picture3.jpg)
+![心动背影](/img/mylove/picture3.jpg)
 
