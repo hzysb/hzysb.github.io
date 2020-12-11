@@ -1,0 +1,82 @@
+---
+layout:     post
+title:      "Hello 2020"
+subtitle:   " \"hello world\""
+date:       2020-11-25 12:00:00
+author:     "ysbao"
+header-img: "img/post-bg-2015.jpg"
+catalog: true
+tags:
+    - 生活
+    - Meta
+
+---
+
+> “Yeah It's on. ”
+
+### 序言
+
+一直想自己开个博客，想了很久一直没有去弄，直到我看到了方志朋的博客搭建，让我有了动力自己搭建一个博客。由于工作时间，断断续续，今天才发表第一篇博客，记录一下生活。感觉挺好的。希望再接再励。整理好的东西放上来。自己玩玩，看看，挺好。
+
+### 博客搭建
+
+1、购买域名
+
+2、域名备案
+
+3、阿里云域名和ip绑定步骤、云解析DNS就是指把网站域名或应用资源转换为数字 IP地址，从而将最终用户的访问路由到相应的网站或应用资源上。
+
+配置如下：
+
+![image-20201025183508220](C:\Users\shenbao.yu\AppData\Roaming\Typora\typora-user-images\image-20201025183508220.png)
+
+
+
+可以 ping 一下，就知道是否绑定了
+
+4、申请免费的SSL证书， 开通https 
+
+
+
+5、博客系统定制 域名和配置域名。 
+
+如果通过github 访问 。要配置  Custom domain，删除掉Custom domain . CName 也会自动删除。
+
+同时配置CNAME
+
+
+
+6、部署指令
+
+```
+要在jekyll 项目里执行
+jekyll build --destination=/usr/share/nginx/html
+
+
+```
+
+7、自动化部署：失败了。要找找原因。时好时坏。有毒
+
+监听的地址：
+
+
+
+进入/root/node-v8.12.0-linux-x64/lib/node_modules/github-webhook-handler
+
+执行如下，否者会报路径不对。
+
+/root/node-v8.12.0-linux-x64/lib/node_modules/forever/bin/forever start -l forever.log -o out.log -e err.log deploy.js
+
+![image-20201025192440169](C:\Users\shenbao.yu\AppData\Roaming\Typora\typora-user-images\image-20201025192440169.png)
+
+
+
+8、阿里云服务器 nginx配置SSL证书，使用https访问。
+
+同时nginx 要安装SSL模块--ngx_http_ssl_module  。
+
+牵扯出另一个问题。  
+
+./configure: No such file or directory
+
+原因：我的nginx 程序目录和 nginx 安装目录不是同一级。  
