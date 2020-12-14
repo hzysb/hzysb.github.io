@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Life Essay Part1"
+title:      "Life Essay Part"
 subtitle:   " \"my first date\""
 date:       2020-11-25 12:00:00
 author:     "ysbao"
@@ -13,7 +13,7 @@ tags:
 
 ---
 
-> “Yeah It's on. ”
+> “生活的点点滴滴 ”
 
 ### 我的第一次约会
 

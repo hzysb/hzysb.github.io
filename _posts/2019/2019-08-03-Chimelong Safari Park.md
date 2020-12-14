@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Life Essay Part2"
+title:      "GuangZhou Tour"
 subtitle:   " \"Chimelong Safari Park\""
 date:       2019-08-03 12:00:00
 author:     "ysbao"
