@@ -37,12 +37,11 @@ tags:
 
   ![img](/img/mylove/picture32.jpg)
 
-* 水西塔，挺好看的。
+* 水西塔，挺好看的，可惜不能爬上去。
 
   ![img](/img/mylove/picture33.jpg)
 
-
- ### 心动的背影
+### 心动的背影
 
 ![心动背影](/img/mylove/picture31.jpg)
 
