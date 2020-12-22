@@ -23,13 +23,13 @@ tags:
 
 项目地址：
 
-https://gitee.com/lemur/easypoi
+<https://gitee.com/lemur/easypoi>
 
 使用教程：
 
-https://opensource.afterturn.cn/doc/easypoi.html#4
+<https://opensource.afterturn.cn/doc/easypoi.html#4>
 
-http://easypoi.mydoc.io/
+<http://easypoi.mydoc.io/>
 
 [测试项目](http://git.oschina.net/lemur/easypoi-test): 
 
@@ -41,9 +41,9 @@ http://easypoi.mydoc.io/
 
 EasyExcel是一个基于Java的简单、省内存的读写Excel的开源项目，对简单读写操作比较实用。
 
-项目地址：https://github.com/alibaba/easyexcel
+项目地址：<https://github.com/alibaba/easyexcel>
 
-使用文档： https://alibaba-easyexcel.github.io/
+使用文档：<https://alibaba-easyexcel.github.io/>
 
 
 
@@ -61,7 +61,7 @@ EasyExcel是一个基于Java的简单、省内存的读写Excel的开源项目�
 
 #### 3.1 excel模板导出样例
 
-实战中，效果如图，主要难道，合并单元格和样式调整，样式这块不如easy-poi 方便，easy-poi直接使用客户模板，不用画。
+实战中，效果如图，主要难点，合并单元格和样式调整，样式这块不如easy-poi 方便，easy-poi直接使用客户模板，不用画。
 
 ![excel export](\img\java\excel\exportExport.png)
 
