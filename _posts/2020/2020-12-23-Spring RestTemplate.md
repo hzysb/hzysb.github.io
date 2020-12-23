@@ -1,8 +1,8 @@
 ---
 layout:     post
 title:      "RestTemplate 的使用"
-subtitle:   " \"RestTemplate 的知识总结\""
-date:       2020-12-22 12:00:00
+subtitle:   " \" Spring RestTemplate\""
+date:       2020-12-23 12:00:00
 author:     "ysbao"
 header-img: "img/post-bg-2015.jpg"
 catalog: true
@@ -473,7 +473,7 @@ public class RestTemplateConfig {
 
 ```
 
-### 参考和引用
+### 引用
 
 [restTemplate 发送Https请求](<https://blog.csdn.net/justry_deng/article/details/82531306>)。里边有Https请求样例
 
