@@ -8,7 +8,6 @@ header-img: "img/post-bg-2015.jpg"
 catalog: true
 tags:
     - Java
-    - Restful工具
 ---
 
 > 千里之行，始于足下
