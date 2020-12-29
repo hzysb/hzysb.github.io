@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Strawberry Girl"
-subtitle:   " \" 采草莓的小姑娘\""
+title:      "Picking Strawberries"
+subtitle:   " \" 草莓园之行\""
 date:       2020-12-27 12:00:00
 author:     "ysbao"
 header-img: "img/post-bg-2015.jpg"
@@ -38,8 +38,5 @@ tags:
 
 ###  精彩剪辑
 
-```xml
-<video id="video" controls="" preload="none">
-    <source id="mp4" src="/img/vedeo/vdieo_01.mp4" type="video/mp4">
-</video>
-```
+<iframe height=498 width=510 src="/img/video/vdieo_01.mp4">
+
