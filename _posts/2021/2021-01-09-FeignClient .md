@@ -15,9 +15,19 @@ tags:
 
 ### 一、原理
 
-Feign 是一个 Java 到 HTTP 的客户端绑定器，Feign 使用 Jersey 和 CXF 等工具为 ReST 或 SOAP 服务编写 java 客户端。此外，Feign 允许您在 Apache HC 等http 库之上编写自己的代码。Feign 以最小的开销将代码连接到 http APIs，并通过可定制的解码器和错误处理（可以写入任何基于文本的 http APIs）将代码连接到 http APIs。
+Feign 是一个 Java 到 HTTP 的客户端绑定器，Feign 允许您在 Apache HC 等http 库之上编写自己的代码。Feign 以最小的开销将代码连接到 http APIs，并通过可定制的解码器和错误处理（可以写入任何基于文本的 http APIs）将代码连接到 http APIs。
 
 Feign 通过将注解处理为模板化请求来工作。参数在输出之前直接应用于这些模板。尽管 Feign 仅限于支持基于文本的 APIs，但它极大地简化了系统方面，例如重放请求。此外，Feign 使得对转换进行单元测试变得简单。
+
+大概原理如下：
+
+* 启动时，程序会进行包扫描，扫描所有包下所有@FeignClient注解的类，并将这些类注入到spring的IOC容器中。当定义的Feign中的接口被调用时，通过JDK的动态代理来生成RequestTemplate。
+
+* RequestTemplate中包含请求的所有信息，如请求参数，请求URL等。
+
+* RequestTemplate声场Request，然后将Request交给client处理，这个client默认是JDK的HTTPUrlConnection，也可以是OKhttp、Apache的HTTPClient等。
+
+* 最后client封装成LoadBaLanceClient，结合ribbon负载均衡地发起调用。
 
 ### 二、处理过程图
 
@@ -112,6 +122,8 @@ public class FeignConfig {
         url = "${feign.client.config.service.url}",
         configuration= FeignConfig.class
 )
+//也可以全局配置，在启动类那边
+@EnableFeignClients(defaultConfiguration = FeignConfig.class)
 ```
 
 ### 五、断路器 hystrix 配置
@@ -238,9 +250,71 @@ logging:
 )
 ```
 
-### 七、引用
+### 七、解码器（Decoder）
+
+解码器作用于Response，用于解析Http请求的响应，提取有用信息数据。
+
+将HTTP响应`feign.Response`解码为指定类型的**单一对象**。当然触发它也有前提：
+
+1. 响应码是2xx
+2. 方法返回值既不是void/null，也不是`feign.Response`类型
+
+通常情况下，我们常使用json字符串进行传输。所以使用StringDecoder，比较多。
+
+```
+//定义自己的decoder方法
+public class DemoDecoder implements Decoder {
+    @Override
+    public Object decode(Response response, Type type) throws IOException, DecodeException, FeignException {
+        if (response.body() == null) {
+            throw new DecodeException(response.status(), "没有返回有效的数据");
+        }
+        String bodyStr = Util.toString(response.body().asReader(Util.UTF_8));
+        if (StringUtils.isEmpty(bodyStr)) {
+            bodyStr = "";
+        }
+        //对结果进行转换
+        FeignResult result = new FeignResult();
+        FeignResult result = (FeignResult) JsonUtil.string2Obj(bodyStr, FeignResult.class);
+        //如果返回错误，且为内部错误，则直接抛出异常
+       if (result == null || !StatusConstant.API_CALL_SUCCESS.equals(result.getCode())) {
+            throw new DecodeException(response.status(), "接口返回错误：" + result.getErrInfo() == null ? bodyStr : result.getErrInfo());
+        }
+        return result;
+    }
+
+```
+
+此外也可以使用feign-jackson 或者feign-gson编码解码，返回JSONObject  对象、
+
+```
+<dependency>
+	<groupId>io.github.openfeign</groupId>
+	<artifactId>feign-gson</artifactId>
+	<version>9.7.0</version>
+</dependency>
+<dependency>
+	<groupId>io.github.openfeign</groupId>
+	<artifactId>feign-jackson</artifactId>
+	<version>9.5.0</version>
+</dependency>
+
+//使用，输出javabeen对象
+PersonClient client2 = Feign.builder().decoder(new GsonDecoder())
+		.target(PersonClient.class, "http://localhost:8080");
+
+```
+
+
+
+### 八、引用
 
 [Java 开源项目 OpenFeign —— feign 的基本使用](https://www.cnblogs.com/siweipancc/p/12635294.html)
 
+[原生Feign的解码器Decoder、ErrorDecoder](https://cloud.tencent.com/developer/article/1588501)
 
+[Feign 官网](https://github.com/OpenFeign/feign/wiki/Custom-error-handling)
 
+[Feign使用例子，比较完整](https://www.cnblogs.com/siweipancc/p/12635294.html)
+
+[Feign 使用大全](https://www.jianshu.com/p/0834508b7a6d)
